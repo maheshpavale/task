@@ -1,12 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Task } from './task';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TkService {
+
+  dataEmitter = new Subject<string>();
+
+  raiseDataEmitterEvent(data:string)
+  {
+    this.dataEmitter.next(data);
+  }
 
   serviceURL:string;
 
