@@ -9,6 +9,8 @@ import { TkService } from '../tk.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  title :string=' Example of Lazy Loading';
+  enteredValue:string='';
   taskObj :Task =new Task();
   taskArr:Task[]=[];
   addTaskValue :string='';
@@ -25,6 +27,14 @@ export class HomeComponent {
     this.getAllTask();
 
   }
+
+  subMethod(){
+    // console.log(this.subjectValue);
+    this.tks.raiseDataEmitterEvent(this.enteredValue);
+  }
+
+
+
   getAllTask(){
     this.tks.getAllTask().subscribe(res=>{
       this.taskArr=res;
